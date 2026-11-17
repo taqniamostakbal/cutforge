@@ -1,5 +1,1 @@
-{"name":"glitch","source":"glitch.ffx","status":"rebuilt",
- "stack":["S_ScanLines x86","ADBE Channel Combiner x19","ADBE Ripple x17"],
- "controls":["Position Wiggle","Scale Wiggle","Crop Wiggle","Wiggle Quantization Steps"],
- "logic":"Quantized wiggle (3-frame steps), 3-6 random slice offsets/frame, R/B channel swaps in bands, global RGB split, scanline multiply.",
- "code":"engine/fxlib.py: glitch(arr, t)"}
+{"animated":["ADBE Ripple Radius","ADBE Ripple Wave Width","CSpice Glitchify Completion","ADBE Channel Combiner (ldat 1584 B — biggest keyframe block in the pack)","ADBE Channel Combiner Invert"],"code":"engine/fxlib.py: glitch(arr, t)","controls":["Position Wiggle","Scale Wiggle","Crop Wiggle","Wiggle Quantization Steps"],"extracted":{"ADBE Ripple":{"Center":[0.333333,0.333333],"Wave Height":20,"Wave Speed":0.2,"note":"Russian UI in the file"},"CSpice Glitchify":{"Amount":20,"Speed":20},"S_ScanLines":{"Blur Mask":12,"Gamma":2,"Lines Angle deg":-35,"Lines Frequency":150,"Lines Sharpness":1,"Saturation":1}},"logic":"Quantized wiggle (3-frame steps — our approximation, step size unmeasured), 3-6 random slice offsets/frame, R/B channel swaps in bands, global RGB split, scanline multiply.","name":"glitch","source":"glitch.ffx","stack":["S_ScanLines x86","ADBE Channel Combiner x19","ADBE Ripple x17"],"status":"rebuilt + static params extracted"}

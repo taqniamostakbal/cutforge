@@ -26,10 +26,16 @@ an API model or a local open model. The forge does not care who thinks.
 4. **Honesty about the gap.** Distinguish three states for every recipe:
    `extracted` (their numbers), `rebuilt` (our code, same logic),
    `approximated` (our code, similar look). Never blur the labels.
-5. **Presets are binary gold.** `.ffx` files are RIFX containers. Effect
-   names and parameter strings are readable inside; expressions are stored
-   as plain text; keyframe values are binary floats — decode before claiming
-   exactness.
+5. **Presets are binary gold.** `.ffx` files are RIFX containers.
+   Decoded 2026-11-17 (`analyzer/ffx.py`, data in
+   `examples/analysis/ffx_params.json`): static values live in `cdat`
+   chunks as big-endian float64 (first double = value; first two = 2-D
+   point; first four = color). Keyframed properties carry NO `cdat` —
+   they carry an `ldat` chunk instead (the time-series container; its
+   record layout is still open, §3.7). `tdb4` is per-property metadata,
+   not one record per keyframe. Effect names and parameter strings are
+   readable inside; expressions are stored as plain text. Never claim a
+   number is extracted until it appears in `ffx_params.json`.
 6. **Copyright hygiene.** Recipes capture *technique* (effect stacks,
    parameters, math). We never redistribute the original packs, plugins or
    project files.
@@ -101,37 +107,96 @@ occurrences, i.e. real usage weight inside the preset.
 ### 3.1 Chroma_1 — the RGB-split look of the promo
 `S_DistortChroma ×98 · ADBE Camera Lens Blur ×47 · ADBE Exposure2 ×47 ·
 S_StretchFrameEdges ×24 · ADBE Minimax ×13`
-Logic: distort each color channel with a *different* warp field, blur the
-outer channels like a lens, stretch the frame edges to hide the seams, lift
-exposure. → `engine/fxlib.py: distort_chroma` (`rebuilt`).
+Extracted static values: `S_DistortChroma` Warp Red **0.5**, Warp Blue
+**1.0**, Steps **27.9**, Blur Lens **1966**, Wrap X/Y **3**, Amount Rel X/Y
+**1.0**; `S_StretchFrameEdges` Center Width **0.4**, Smooth **0.5**;
+`ADBE Minimax` Operation **2**, Channel **1**, Direction **1**;
+`ADBE Exposure2` Master **0** (no exposure lift — the earlier "+6%"
+claim was wrong). Keyframed (ldat, series layout open): DistortChroma
+Amount, Exposure, Center Squeeze, Minimax Radius, Lens Blur Radius +
+Aspect Ratio. → `engine/fxlib.py: distort_chroma` (`rebuilt`; its
+`amount=13` default is OUR scale, not the file's — re-map to Warp
+Red 0.5 / Blue 1.0 on the next fxlib pass).
 
 ### 3.2 shake 25 / shake 27 — impact shakes
 `Directional Blur ×337 · ADBE Tile ×19 · Offset ×16 · Levels · Transform ·
 ADBE Geometry2 (27 only)`
-Logic: position shake whose *velocity* drives a directional blur along the
-motion vector; Tile replicates edges so the frame never shows void.
-→ `fxlib.shake_dirblur` (`rebuilt`).
+Extracted static values (both): BCC Directional Blur Angle **90°** (27)
+vs **0°** (25), Maximum Deviation **255**, Thin/Spread/Blur Threshold
+**0**, Apply Mix **100**; Tile Center **(0.5, 0.5)**, Tile **100%**,
+Output **130%** (27) vs **200%** (25), Mirror Edges **on**. Beat Reactor
+wiring is present (Effect on Parameter **2** = Blur Amount, Apply
+Strength **100%**, Falloff **0.5 s**, three Samplers at 20–2000 Hz with
+corners offset by 0.11) but **disabled** in the saved file (Enable = 0),
+so it does NOT drive the shake as saved. Keyframed (ldat): Transform
+Position (**936 B** series in 27 — the main motion), Scale, Rotation;
+Blur Amount (ldat head 90 in 27, 80 in 25); Iris Scale. CORRECTION:
+the "two-sine 11/23 Hz x, 13/27 Hz y, amp 13px" in `fxlib.shake_dirblur`
+was NEVER in the file — no wiggle expression exists in either preset.
+It is our approximation, kept as a stand-in until the ldat series is
+decoded. Status: `rebuilt` (approximation) + static params `extracted`.
 
 ### 3.3 smooth shake — floating camera feel
 `S_BlurMotion ×105 · ADBE Geometry2 ×41 · Curves`
+Extracted static values: `S_BlurMotion` To Z Dist **0.8**, Exposure Bias
+**0.5**, Brightness **1.0**, Wrap X/Y **1**; LensBlur Noise Intensity **0**,
+Scale **100**, Stretch **0**, Blur **10**, Seed **0**; Iris Shape **5**,
+Bokeh Shading **20**, Gamma **220**. Keyframed (ldat): Transform
+Position / Scale / Rotation, Curves, S_BlurMotion From Z Dist.
 Plus the crown jewel below (§4). → `fxlib.smooth_shake` (`rebuilt`).
 
 ### 3.4 glitch
 `S_ScanLines ×86 · ADBE Channel Combiner ×19 · ADBE Ripple ×17` + controls
 named *Position Wiggle, Scale Wiggle, Crop Wiggle, Wiggle Quantization Steps*.
+Extracted static values: `S_ScanLines` Lines Frequency **150**, Sharpness
+**1**, Angle **−35°**, Gamma **2**, Saturation **1**, Blur Mask **12**;
+Glitchify Amount **20**, Speed **20**; Ripple wave speed **0.2**, height
+**20**, center **(1/3, 1/3)** (Russian UI). Keyframed (ldat): Ripple
+radius + wave width, Glitchify Completion, Channel Combiner (the
+**1584 B** series — the biggest single keyframe block in the pack).
 Logic: quantized wiggle (values change in steps, not smoothly), slice
 offsets, channel swaps, scanline multiply. → `fxlib.glitch` (`rebuilt`).
 
 ### 3.5 стилизация (stylization)
 `S_HalfTone ×73 · ADBE Turbulent Displace ×31`
-Logic: halftone dot screen (dot radius ∝ darkness) over a gently
-turbulence-displaced image. → `fxlib.halftone` (`rebuilt`; two failed
-mixing formulas are documented in the lab notes — verify visually, always).
+Extracted static values: PEDG Radius **500**, Exposure **0.2**,
+Downsample **80**; `S_HalfTone` Dots Frequency **126**. NO animated
+properties at all — the only fully static preset of the six, so its
+numbers are complete as extracted. Logic: halftone dot screen (dot
+radius ∝ darkness) over a gently turbulence-displaced image. →
+`fxlib.halftone` (`rebuilt`; two failed mixing formulas are documented
+in the lab notes — verify visually, always).
 
 ### 3.6 !shake
 `ADBE Turbulent Displace ×31 · ADBE Tile ×19 · Motion Blur`
-Logic: animated noise displacement field, edges tiled. →
-`fxlib.turbulent_shake` (`rebuilt`).
+Extracted: Tile 100% / Output 130% (same Tile as shake 27), Mirror Edges
+on. Keyframed (ldat): Tile Center, Turbulent Displace Amount / Size /
+Evolution, Motion Blur Length (ldat head 55). Logic: animated noise
+displacement field, edges tiled. →
+`fxlib.turbulent_shake` (`rebuilt`; its "+/-11px, 90px cells, 6–7 Hz"
+figures are our approximation, not file numbers).
+
+### 3.7 What the decoder proved (2026-11-17) — and what is still open
+
+Tool: `analyzer/ffx.py` (RIFX walker + `cdat` BE-float64 reader +
+`ldat` animated-property inventory). Full tables:
+`examples/analysis/ffx_params.json` (105–333 streams per file).
+
+- Static parameters: **decoded, complete** for all six presets.
+- Animated properties: **inventoried, complete** (5–6 per file; see §3.1–3.6).
+  A property is animated iff its stream has `ldat` instead of `cdat`.
+- OPEN: the `ldat` record layout. Each `ldat` holds the keyframe series
+  (fractions 1/6, 1/3 and values like 26/33/41/55/80/90 appear as BE
+  doubles), but times vs. values vs. bezier tangents are not yet split
+  into records. Decoding that layout is the last mile to numerically
+  exact motion — do not claim it until a decoded series replays and
+  matches the reference frame by frame.
+- CORRECTIONS this decode forced: (1) shake frequencies 11/23/13/27 Hz
+  were invented — the real shake is keyframed Position/Scale/Rotation;
+  (2) Chroma "R×1.0/G×0.45/B×1.6, +6% exposure" was invented — the file
+  says Warp Red 0.5 / Blue 1.0, Exposure 0; (3) the "hundreds of
+  Directional Blur keyframe points" reading was wrong — ×337 is chunk
+  occurrences, and `tdb4` is per-property metadata.
 
 ## 4. The extracted expression (verbatim logic, real parameters)
 
@@ -189,8 +254,9 @@ the Instruction (this file) is the constant.
 
 ## 9. Open veins (known, unsolved, do not fake)
 
-- `.ffx` keyframe float decoding (values + bezier tangents) — the last mile
-  to numerically exact motion.
+- `.ffx` keyframe series decoding — static params decoded and animated
+  properties inventoried (§3.7); the `ldat` record layout (times vs.
+  values vs. bezier tangents) is the last mile to numerically exact motion.
 - Flow v1.5.0's curve library: its `dialog.js` (1.96 MB) is a bundled shell
   with no curve data; the engine lives in the host scripts — unmined.
 - Sapphire/BCC algorithms are proprietary: rebuilds match behavior, not

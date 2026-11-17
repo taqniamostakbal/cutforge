@@ -1,5 +1,1 @@
-{"name":"smooth shake","source":"smooth shake.ffx","status":"rebuilt + extracted expression",
- "stack":["S_BlurMotion x105","ADBE Geometry2 x41","Curves"],
- "expression":{"amp":0.02,"freq":2.0,"decay":6.0,"window_s":1.0,
-   "formula":"value + v*amp*sin(freq*t*2pi)/exp(decay*t)","note":"verbatim from inside the .ffx binary; verified numerically"},
- "code":"engine/fxlib.py: smooth_shake(arr, t), bounce_value(keys, t)"}
+{"animated":["ADBE Geometry2 Position","ADBE Geometry2 Scale","ADBE Geometry2 Rotation","ADBE CurvesCustom Curves","S_BlurMotion From Z Dist","BCC LensBlur Iris Scale"],"code":"engine/fxlib.py: smooth_shake(arr, t), bounce_value(keys, t)","expression":{"amp":0.02,"decay":6.0,"formula":"value + v*amp*sin(freq*t*2pi)/exp(decay*t)","freq":2.0,"note":"verbatim from inside the .ffx binary; verified numerically","window_s":1.0},"extracted":{"BCC LensBlur":{"Bokeh Shading":20,"Gamma":220,"Iris Shape":5},"BCC LensBlur Noise":{"Blur":10,"Intensity":0,"Scale":100,"Seed":0,"Stretch":0},"S_BlurMotion":{"Brightness":1.0,"Exposure Bias":0.5,"To Z Dist":0.8,"Wrap X":1,"Wrap Y":1}},"name":"smooth shake","source":"smooth shake.ffx","stack":["S_BlurMotion x105","ADBE Geometry2 x41","Curves"],"status":"rebuilt + extracted expression + static params extracted"}

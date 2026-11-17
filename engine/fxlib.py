@@ -66,6 +66,12 @@ def turbulent_shake(arr, t, seed=3.0, amount=11.0):
     return displace(arr, fx, fy)
 
 # ---------- Chroma_1: DistortChroma + Lens Blur + StretchFrameEdges + Exposure ----------
+# NOTE (2026-11-17, analyzer/ffx.py): the file's real numbers are Warp Red
+# 0.5 / Warp Blue 1.0, Steps 27.9, Blur Lens 1966, StretchFrameEdges Center
+# Width 0.4, Exposure Master 0. The (1.0, 0.45, 1.6) multipliers, x1.06
+# exposure lift and 1.05 zoom below are OUR approximation, kept for now so
+# the demo render stays as approved; re-map to the extracted numbers on
+# the next fxlib pass (see INSTRUCTION.md §3.1).
 def distort_chroma(arr, t, amount=13.0, seed=8.0):
     h, w = arr.shape[:2]
     rng = np.random.default_rng(int(seed * 100))
@@ -85,6 +91,13 @@ def distort_chroma(arr, t, amount=13.0, seed=8.0):
     return np.asarray(im).astype(np.float32)
 
 # ---------- shake 25/27: keyframed shake + Directional Blur + Tile ----------
+# NOTE (2026-11-17, analyzer/ffx.py): the real motion is KEYFRAMED
+# Transform Position/Scale/Rotation + Blur Amount (Blur Amount ldat head
+# 90 in 27, 80 in 25; Position series is 936 B in 27). The two-sine below
+# (11/23 Hz, 13/27 Hz, amp 13px) was never in the file — no wiggle
+# expression exists in either preset — it is our stand-in until the ldat
+# series layout is decoded (INSTRUCTION.md §3.2, §3.7). Tile Output is
+# 130% (27) / 200% (25); Blur Angle 90 deg (27) / 0 deg (25).
 def shake_dirblur(arr, t, seed=5.0, amp=13.0):
     x = _noise2(t, seed, 11.0, 23.0) * amp
     y = _noise2(t, seed + 9.0, 13.0, 27.0) * amp * 0.8

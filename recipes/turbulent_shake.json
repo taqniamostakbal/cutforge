@@ -1,4 +1,1 @@
-{"name":"!shake","source":"!shake.ffx","status":"rebuilt",
- "stack":["ADBE Turbulent Displace x31","ADBE Tile x19","Motion Blur"],
- "logic":"Animated smooth-noise displacement field (+/-11px, 90px cells, 6-7 Hz breathing), edges tiled.",
- "code":"engine/fxlib.py: turbulent_shake(arr, t)"}
+{"animated":["ADBE Tile Center","ADBE Turbulent Displace Amount (ldat head 36)","ADBE Turbulent Displace Size (ldat head 104)","ADBE Turbulent Displace Evolution (ldat head 26)","ADBE Motion Blur Blur Length (ldat head 55)"],"code":"engine/fxlib.py: turbulent_shake(arr, t)","extracted":{"ADBE Tile":{"Center":[0.5,0.5],"Mirror Edges":1,"Output Height":130,"Output Width":130,"Tile Height":100,"Tile Width":100}},"logic":"Animated smooth-noise displacement field, edges tiled. The '+/-11px, 90px cells, 6-7 Hz breathing' figures in fxlib are our approximation, not file numbers.","name":"!shake","source":"!shake.ffx","stack":["ADBE Turbulent Displace x31","ADBE Tile x19","Motion Blur"],"status":"rebuilt (approximation) + static params extracted"}

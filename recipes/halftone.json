@@ -1,4 +1,1 @@
-{"name":"stylization (стилизация)","source":"стилизация.ffx","status":"rebuilt",
- "stack":["S_HalfTone x73","ADBE Turbulent Displace x31"],
- "logic":"Slight turbulence displacement, then halftone: dot radius ~ (1-luminance) on an 8px grid, ink = source color x0.88 on 242 paper.",
- "code":"engine/fxlib.py: halftone(arr, t)"}
+{"animated":[],"code":"engine/fxlib.py: halftone(arr, t)","extracted":{"PEDG":{"Downsample":80,"Exposure":0.2,"Radius":500},"S_HalfTone":{"Dots Frequency":126}},"logic":"Slight turbulence displacement, then halftone: dot radius ~ (1-luminance) on a grid set by Dots Frequency 126, ink = source color x0.88 on 242 paper (grid size and ink factor are our approximation). The only fully static preset of the six — its numbers are complete as extracted.","name":"stylization (стилизация)","source":"стилизация.ffx","stack":["S_HalfTone x73","ADBE Turbulent Displace x31"],"status":"rebuilt + fully extracted (no animated properties)"}
