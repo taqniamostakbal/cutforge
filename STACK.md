@@ -10,6 +10,11 @@ Rule: take the method, never install blind. Licenses verified per item.
 | Blender 5.3 | true-3D chapters | GPL | INSTALLED + Cycles proven (~5s/frame) |
 | Whisper (Workers AI) | subtitles/transcription | cloud free tier | IN USE (Bolm fix424) |
 
+## Adopted and cloned on this machine
+| Item | What we take | License | Note |
+|---|---|---|---|
+| EL4CTEO/blender-skills | 28 professional Blender workflow skills (animation, rigging, rendering, QA, export) | MIT | Cloned to ~/workspace/tools/blender-skills and READ before use. Verified against Blender 5.3, the exact version installed here. Written for Claude Code skill folders; here the workflows are read and applied directly in our own bpy scripts. |
+
 ## Adopted as doctrine / reference
 | Item | What we take | License | Note |
 |---|---|---|---|
