@@ -76,6 +76,23 @@ i.e. chroma distortion is a *transition/fast-element* weapon, not a
 constant grade. Rebuilds must pulse it the same way: on at cuts and
 impacts, off at rest.
 
+### 2.2 The channel's material videos — also atlased, all frames
+
+The endlesswave channel's own material files are **assets, not
+tutorials** (measured, `examples/analysis/atlas_*.json`):
+
+- `endlesswave(2)/(13)/(14).mp4` — 20 s loops at 24 fps with near-zero
+  motion (mean ≤0.6) and constant luminance: **static background
+  plates**. (13) carries a constant chroma offset baked into the artwork
+  itself — split ≠ 0 in all 481 frames with zero motion.
+- `steklo.mp4` ("glass") — 8.5 s dark overlay (luminance 0–27), motion
+  bursts to 23.8, split active in 76/256 frames: an animated
+  glass/refraction element.
+- `1.mp4` — a 1.1 s dark micro-flash element.
+
+Doctrine: when a "video" measures as a plate, treat it as a plate —
+composite it, don't learn timing from it.
+
 ## 3. Extracted recipes (from the endlesswave pack, `.ffx` internals)
 
 Effect stacks read from the RIFX binaries with `strings`; counts are chunk
