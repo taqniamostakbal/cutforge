@@ -12,11 +12,14 @@ are built from `pdnm` (popup/enum label lists), `tdmn` (40B headers),
 Verified against `smooth shake.ffx` (6 effects: BCC Lens Blur OBS ×2,
 Curves, Transform ×2, S_BlurMotion):
 
-- `[12:16]` — property name length N (big-endian int32)
-- `[16:16+N]` — property name, plain ASCII: `Anchor Point`,
-  `Position`, `Scale Height`, `Scale Width`, `Skew`, `Skew Axis`,
-  `Rotation`, `Opacity`, `Shutter Angle`, `Sampling`, `Channel:`,
-  `Curves`. A record with N=9 and no name is a group terminator.
+- `[16:44]` — property name, plain ASCII, null-terminated: `Anchor
+  Point`, `Position`, `Scale Height`, `Scale Width`, `Skew`,
+  `Skew Axis`, `Rotation`, `Opacity`, `Shutter Angle`, `Sampling`,
+  `Channel:`, `Curves`. A record with code 9 and no name is a group
+  terminator.
+- `[12:16]` — a small code (2, 3, 4, 6, 7, 9, 11, 15 observed). NOT
+  the name length (it reads 6 for the 12-char `Anchor Point`) —
+  likely a property subtype; semantics still open.
 - The first record of each effect is all-zero except shared trailer
   constants at `[84]=225.0`, `[128]=-1`, `[136]=15.0` — a stream
   header, identical across effects.

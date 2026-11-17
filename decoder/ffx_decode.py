@@ -120,10 +120,11 @@ def describe_pard(d):
     e.g. Opacity default 100, Skew range -70..70, Shutter Angle 360."""
     if len(d) < 148:
         return f"({len(d)}B, short)"
-    n = struct.unpack(">i", d[12:16])[0]
-    nm = ""
-    if 0 < n < 60:
-        nm = d[16:16 + n].decode("ascii", "replace")
+    # Name: ASCII at [16:], null-terminated inside a ~28-byte field.
+    # ([12:16] is a small code — 2,3,4,6,7,9,11,15 seen — NOT the name
+    # length: it reads 6 for the 12-char "Anchor Point". Semantics open.)
+    raw = d[16:44]
+    nm = raw.split(b"\x00")[0].decode("ascii", "replace")
     tail = []
     for off in range(124, 148, 4):
         v = struct.unpack(">i", d[off:off + 4])[0] / 65536.0
