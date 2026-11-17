@@ -1,0 +1,867 @@
+{
+ "presets": [
+  {
+   "name": "!shake.ffx",
+   "size_kb": 23,
+   "effects": [
+    "Motion Tile",
+    "Turbulent Displace",
+    "Directional Blur",
+    "Motion Tile",
+    "Turbulent Displace",
+    "Directional Blur"
+   ],
+   "streams": 5,
+   "keyframes": 12
+  },
+  {
+   "name": "Chroma_1.ffx",
+   "size_kb": 66,
+   "effects": [
+    "Exposure",
+    "S_StretchFrameEdges",
+    "S_DistortChroma",
+    "Minimax",
+    "Camera Lens Blur",
+    "Exposure",
+    "S_StretchFrameEdges",
+    "S_DistortChroma",
+    "Minimax",
+    "Camera Lens Blur"
+   ],
+   "streams": 6,
+   "keyframes": 18
+  },
+  {
+   "name": "glitch.ffx",
+   "size_kb": 99,
+   "effects": [
+    "\u0420\u044f\u0431\u044c",
+    "Glitchify",
+    "S_ScanLines",
+    "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u043a\u043e\u043c\u0431\u0438\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043a\u0430\u043d\u0430\u043b\u043e\u0432",
+    "RSMB",
+    "\u0420\u044f\u0431\u044c",
+    "Glitchify",
+    "S_ScanLines",
+    "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u043a\u043e\u043c\u0431\u0438\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043a\u0430\u043d\u0430\u043b\u043e\u0432",
+    "RSMB"
+   ],
+   "streams": 5,
+   "keyframes": 44
+  },
+  {
+   "name": "shake 25.ffx",
+   "size_kb": 177,
+   "effects": [
+    "Motion Tile",
+    "BCC Directional Blur",
+    "BCC Lens Blur OBS",
+    "Motion Tile",
+    "BCC Directional Blur",
+    "BCC Lens Blur OBS",
+    "Motion Tile",
+    "BCC Directional Blur",
+    "BCC Lens Blur OBS"
+   ],
+   "streams": 6,
+   "keyframes": 21
+  },
+  {
+   "name": "shake 27.ffx",
+   "size_kb": 181,
+   "effects": [
+    "Motion Tile",
+    "Transform",
+    "BCC Directional Blur",
+    "BCC Lens Blur OBS",
+    "Motion Tile",
+    "Transform",
+    "BCC Directional Blur",
+    "BCC Lens Blur OBS",
+    "Motion Tile",
+    "Transform",
+    "BCC Directional Blur",
+    "BCC Lens Blur OBS"
+   ],
+   "streams": 5,
+   "keyframes": 21
+  },
+  {
+   "name": "smooth shake.ffx",
+   "size_kb": 120,
+   "effects": [
+    "BCC Lens Blur OBS",
+    "Curves",
+    "Transform",
+    "Transform",
+    "S_BlurMotion",
+    "BCC Lens Blur OBS",
+    "Curves",
+    "Transform",
+    "Transform",
+    "S_BlurMotion"
+   ],
+   "streams": 6,
+   "keyframes": 15
+  },
+  {
+   "name": "\u0441\u0442\u0438\u043b\u0438\u0437\u0430\u0446\u0438\u044f.ffx",
+   "size_kb": 78,
+   "effects": [
+    "Deep Glow",
+    "S_HalfTone",
+    "Turbulent Displace",
+    "Deep Glow",
+    "S_HalfTone",
+    "Turbulent Displace"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "12fps.ffx",
+   "size_kb": 6,
+   "effects": [
+    "Posterize Time",
+    "Posterize Time"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "anime-lines.ffx",
+   "size_kb": 23,
+   "effects": [
+    "Turbulent Noise",
+    "Polar Coordinates",
+    "Turbulent Noise",
+    "Polar Coordinates"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "bevel.ffx",
+   "size_kb": 13,
+   "effects": [
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Bevel Alpha",
+    "Drop Shadow"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "blink.ffx",
+   "size_kb": 38,
+   "effects": [],
+   "streams": 2,
+   "keyframes": 4
+  },
+  {
+   "name": "blur-up.ffx",
+   "size_kb": 41,
+   "effects": [
+    "Slider Control",
+    "Slider Control"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "bounce-text.ffx",
+   "size_kb": 13,
+   "effects": [
+    "Transform",
+    "Transform"
+   ],
+   "streams": 2,
+   "keyframes": 4
+  },
+  {
+   "name": "bouncing-text-hq.ffx",
+   "size_kb": 39,
+   "effects": [],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "brick.ffx",
+   "size_kb": 103,
+   "effects": [
+    "Fractal Noise",
+    "S_EmbossShiny",
+    "CC Toner",
+    "Deep Glow",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Fractal Noise",
+    "S_EmbossShiny",
+    "CC Toner",
+    "Deep Glow",
+    "Bevel Alpha",
+    "Drop Shadow"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "bubble.ffx",
+   "size_kb": 96,
+   "effects": [
+    "S_DropShadow",
+    "S_DropShadow",
+    "Deep Glow",
+    "CC Force Motion Blur",
+    "CC Glass",
+    "S_DropShadow",
+    "S_DropShadow",
+    "Deep Glow",
+    "CC Force Motion Blur",
+    "CC Glass"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "cartoonish.ffx",
+   "size_kb": 23,
+   "effects": [
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Drop Shadow",
+    "",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Drop Shadow",
+    ""
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "cloud.ffx",
+   "size_kb": 73,
+   "effects": [
+    "Fractal Noise",
+    "Deep Glow",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Fractal Noise",
+    "Deep Glow",
+    "Bevel Alpha",
+    "Drop Shadow"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "damage.ffx",
+   "size_kb": 51,
+   "effects": [
+    "S_DigitalDamage",
+    "S_DigitalDamage"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "default.ffx",
+   "size_kb": 119,
+   "effects": [
+    "S_DropShadow",
+    "",
+    "S_DropShadow",
+    "",
+    "S_DropShadow",
+    ""
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "dither.ffx",
+   "size_kb": 18,
+   "effects": [
+    "RetroDither",
+    "RetroDither"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "flicker.ffx",
+   "size_kb": 41,
+   "effects": [],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "glass.ffx",
+   "size_kb": 75,
+   "effects": [
+    "Gradient Ramp",
+    "Deep Glow",
+    "CC Glass",
+    "CC Light Sweep",
+    "Gradient Ramp",
+    "Deep Glow",
+    "CC Glass",
+    "CC Light Sweep"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "glitch_shape.ffx",
+   "size_kb": 109,
+   "effects": [
+    "Turbulent Displace",
+    "S_WipePixelate",
+    "CC Light Sweep",
+    "Deep Glow 2",
+    "Turbulent Displace",
+    "S_WipePixelate",
+    "CC Light Sweep",
+    "Deep Glow 2"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "ice-blue.ffx",
+   "size_kb": 68,
+   "effects": [
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Deep Glow",
+    "Drop Shadow",
+    "Bevel Alpha",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Deep Glow",
+    "Drop Shadow",
+    "Bevel Alpha"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "morphling.ffx",
+   "size_kb": 91,
+   "effects": [
+    "S_TextureFlux",
+    "Drop Shadow",
+    "Deep Glow",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Turbulent Displace",
+    "S_TextureFlux",
+    "Drop Shadow",
+    "Deep Glow",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Turbulent Displace"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "ocean-dark.ffx",
+   "size_kb": 36,
+   "effects": [
+    "Gradient Ramp",
+    "RetroDither",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Drop Shadow",
+    "Gradient Ramp",
+    "RetroDither",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Drop Shadow"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "opacity-flicker-in.ffx",
+   "size_kb": 84,
+   "effects": [],
+   "streams": 3,
+   "keyframes": 20
+  },
+  {
+   "name": "pixel.ffx",
+   "size_kb": 106,
+   "effects": [
+    "Drop Shadow",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "CC Block Load",
+    "Drop Shadow",
+    "Deep Glow 2",
+    "Drop Shadow",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "CC Block Load",
+    "Drop Shadow",
+    "Deep Glow 2"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "pixeltransition.ffx",
+   "size_kb": 18,
+   "effects": [
+    "S_WipePixelate",
+    "Drop Shadow",
+    "S_WipePixelate",
+    "Drop Shadow"
+   ],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "poetti.ffx",
+   "size_kb": 106,
+   "effects": [
+    "Drop Shadow",
+    "Drop Shadow",
+    "Drop Shadow",
+    "CC Light Sweep",
+    "CC Light Sweep",
+    "Deep Glow 2",
+    "Drop Shadow",
+    "Drop Shadow",
+    "Drop Shadow",
+    "CC Light Sweep",
+    "CC Light Sweep",
+    "Deep Glow 2"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "premium.ffx",
+   "size_kb": 99,
+   "effects": [
+    "CC Light Sweep",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Deep Glow 2",
+    "CC Light Sweep",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "Deep Glow 2"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "rainbow.ffx",
+   "size_kb": 146,
+   "effects": [
+    "S_TextureFlux",
+    "CC Light Sweep",
+    "S_PseudoColor",
+    "Deep Glow 2",
+    "Bevel Alpha",
+    "CC Light Rays",
+    "CC Light Rays",
+    "S_TextureFlux",
+    "CC Light Sweep",
+    "S_PseudoColor",
+    "Deep Glow 2",
+    "Bevel Alpha",
+    "CC Light Rays",
+    "CC Light Rays"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "reels.ffx",
+   "size_kb": 60,
+   "effects": [
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Deep Glow",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Deep Glow"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "reveal-right.ffx",
+   "size_kb": 38,
+   "effects": [],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "roblox.ffx",
+   "size_kb": 103,
+   "effects": [
+    "Bevel Alpha",
+    "Drop Shadow",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Deep Glow 2",
+    "Bevel Alpha",
+    "Drop Shadow",
+    "CC Light Sweep",
+    "Drop Shadow",
+    "Deep Glow 2"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "scaly-flicker.ffx",
+   "size_kb": 41,
+   "effects": [],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "screen.ffx",
+   "size_kb": 140,
+   "effects": [
+    "S_Vignette",
+    "Noise",
+    "S_WarpChroma",
+    "Lumetri Color",
+    "Optics Compensation",
+    "S_Vignette",
+    "Noise",
+    "S_WarpChroma",
+    "Lumetri Color",
+    "Optics Compensation"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "shake.ffx",
+   "size_kb": 23,
+   "effects": [
+    "Motion Tile",
+    "Turbulent Displace",
+    "Directional Blur",
+    "Motion Tile",
+    "Turbulent Displace",
+    "Directional Blur"
+   ],
+   "streams": 5,
+   "keyframes": 12
+  },
+  {
+   "name": "slide-up.ffx",
+   "size_kb": 38,
+   "effects": [],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "stylize.ffx",
+   "size_kb": 78,
+   "effects": [
+    "S_HalfTone",
+    "Turbulent Displace",
+    "Deep Glow",
+    "S_HalfTone",
+    "Turbulent Displace",
+    "Deep Glow"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "swag.ffx",
+   "size_kb": 41,
+   "effects": [
+    "Gradient Ramp",
+    "Drop Shadow",
+    "Drop Shadow",
+    "Bevel Alpha",
+    "RetroDither",
+    "CC Toner",
+    "Gradient Ramp",
+    "Drop Shadow",
+    "Drop Shadow",
+    "Bevel Alpha",
+    "RetroDither",
+    "CC Toner"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "text-style-1.ffx",
+   "size_kb": 38,
+   "effects": [],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "toxic.ffx",
+   "size_kb": 125,
+   "effects": [
+    "Gradient Ramp",
+    "Bevel Alpha",
+    "CC Glass",
+    "Turbulent Displace",
+    "Drop Shadow",
+    "Noise",
+    "Deep Glow 2",
+    "Gradient Ramp",
+    "Bevel Alpha",
+    "CC Glass",
+    "Turbulent Displace",
+    "Drop Shadow",
+    "Noise",
+    "Deep Glow 2"
+   ],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "transition.ffx",
+   "size_kb": 144,
+   "effects": [
+    "Displacer Pro",
+    "Turbulent Displace",
+    "Hue/Saturation",
+    "CC Scale Wipe",
+    "Deep Glow 2",
+    "Displacer Pro",
+    "Turbulent Displace",
+    "Hue/Saturation",
+    "CC Scale Wipe",
+    "Deep Glow 2",
+    "Displacer Pro",
+    "Turbulent Displace",
+    "Hue/Saturation",
+    "CC Scale Wipe",
+    "Deep Glow 2"
+   ],
+   "streams": 9,
+   "keyframes": 26
+  },
+  {
+   "name": "typewriter.ffx",
+   "size_kb": 55,
+   "effects": [],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "unicorn.ffx",
+   "size_kb": 129,
+   "effects": [
+    "4-Color Gradient",
+    "Hue/Saturation",
+    "CC Light Sweep",
+    "Bevel Alpha",
+    "Deep Glow 2",
+    "Drop Shadow",
+    "CC Glass",
+    "4-Color Gradient",
+    "Hue/Saturation",
+    "CC Light Sweep",
+    "Bevel Alpha",
+    "Deep Glow 2",
+    "Drop Shadow",
+    "CC Glass"
+   ],
+   "streams": 1,
+   "keyframes": 2
+  },
+  {
+   "name": "wiggletext.ffx",
+   "size_kb": 44,
+   "effects": [],
+   "streams": 0,
+   "keyframes": 0
+  },
+  {
+   "name": "Chrome.ffx",
+   "size_kb": 39,
+   "effects": [],
+   "streams": 0,
+   "keyframes": 0
+  }
+ ],
+ "player": [
+  {
+   "file": "!shake.ffx",
+   "values": [
+    36.0,
+    0.0
+   ]
+  },
+  {
+   "file": "!shake.ffx",
+   "values": [
+    104.0,
+    381.6
+   ]
+  },
+  {
+   "file": "!shake.ffx",
+   "values": [
+    26.0,
+    368.0
+   ]
+  },
+  {
+   "file": "!shake.ffx",
+   "values": [
+    55.0,
+    0.0
+   ]
+  },
+  {
+   "file": "Chroma_1.ffx",
+   "values": [
+    0.0,
+    2.76,
+    0.0
+   ]
+  },
+  {
+   "file": "Chroma_1.ffx",
+   "values": [
+    1.0,
+    0.553,
+    1.0
+   ]
+  },
+  {
+   "file": "Chroma_1.ffx",
+   "values": [
+    0.0,
+    -0.36,
+    0.0
+   ]
+  },
+  {
+   "file": "Chroma_1.ffx",
+   "values": [
+    0.0,
+    41.0,
+    0.0
+   ]
+  },
+  {
+   "file": "Chroma_1.ffx",
+   "values": [
+    0.0,
+    17.0,
+    0.0
+   ]
+  },
+  {
+   "file": "Chroma_1.ffx",
+   "values": [
+    0.75,
+    3.82,
+    0.01
+   ]
+  },
+  {
+   "file": "glitch.ffx",
+   "values": [
+    41.0,
+    33.0
+   ]
+  },
+  {
+   "file": "glitch.ffx",
+   "values": [
+    55.2,
+    100.0
+   ]
+  },
+  {
+   "file": "glitch.ffx",
+   "values": [
+    0.0,
+    87.0,
+    0.0
+   ]
+  },
+  {
+   "file": "glitch.ffx",
+   "values": [
+    1.0,
+    2.0,
+    4.0,
+    7.0,
+    1.0,
+    14.0,
+    15.0,
+    5.0,
+    1.0,
+    2.0,
+    12.0,
+    9.0,
+    7.0,
+    5.0,
+    16.0,
+    2.0,
+    1.0,
+    2.0,
+    4.0,
+    7.0,
+    1.0,
+    14.0,
+    15.0,
+    5.0,
+    1.0,
+    2.0,
+    12.0,
+    9.0,
+    7.0,
+    5.0,
+    16.0,
+    2.0,
+    1.0
+   ]
+  }
+ ],
+ "stats": {
+  "presets": 49,
+  "streams": 62,
+  "keyframes": 213,
+  "effects_total": 316,
+  "top_cadence": [
+   [
+    0.0,
+    66
+   ],
+   [
+    0.1667,
+    35
+   ],
+   [
+    0.3333,
+    35
+   ],
+   [
+    0.5,
+    8
+   ],
+   [
+    1.0,
+    7
+   ]
+  ]
+ }
+}
