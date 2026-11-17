@@ -1,0 +1,5 @@
+{"name":"smooth shake","source":"smooth shake.ffx","status":"rebuilt + extracted expression",
+ "stack":["S_BlurMotion x105","ADBE Geometry2 x41","Curves"],
+ "expression":{"amp":0.02,"freq":2.0,"decay":6.0,"window_s":1.0,
+   "formula":"value + v*amp*sin(freq*t*2pi)/exp(decay*t)","note":"verbatim from inside the .ffx binary; verified numerically"},
+ "code":"engine/fxlib.py: smooth_shake(arr, t), bounce_value(keys, t)"}

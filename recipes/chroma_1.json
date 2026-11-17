@@ -1,0 +1,4 @@
+{"name":"Chroma_1","source":"Chroma_1.ffx (endlesswave pack)","status":"rebuilt",
+ "stack":["S_DistortChroma x98","ADBE Camera Lens Blur x47","ADBE Exposure2 x47","S_StretchFrameEdges x24","ADBE Minimax x13"],
+ "logic":"Per-channel warp distortion (R x1.0, G x0.45, B x1.6 of a smooth noise field), lens-blur on outer channels, 1.05x edge stretch, +6% exposure.",
+ "code":"engine/fxlib.py: distort_chroma(arr, t, amount=13)"}

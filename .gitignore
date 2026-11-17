@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+frames*/
+demo_frames/
+*.blend1
+renders/
+.env

@@ -1,0 +1,4 @@
+{"name":"stylization (стилизация)","source":"стилизация.ffx","status":"rebuilt",
+ "stack":["S_HalfTone x73","ADBE Turbulent Displace x31"],
+ "logic":"Slight turbulence displacement, then halftone: dot radius ~ (1-luminance) on an 8px grid, ink = source color x0.88 on 242 paper.",
+ "code":"engine/fxlib.py: halftone(arr, t)"}

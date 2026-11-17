@@ -1,0 +1,4 @@
+{"name":"!shake","source":"!shake.ffx","status":"rebuilt",
+ "stack":["ADBE Turbulent Displace x31","ADBE Tile x19","Motion Blur"],
+ "logic":"Animated smooth-noise displacement field (+/-11px, 90px cells, 6-7 Hz breathing), edges tiled.",
+ "code":"engine/fxlib.py: turbulent_shake(arr, t)"}

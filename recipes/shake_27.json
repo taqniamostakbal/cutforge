@@ -1,0 +1,4 @@
+{"name":"shake 27","source":"shake 27.ffx","status":"rebuilt",
+ "stack":["Directional Blur x337","ADBE Tile x19","Offset x16","Levels","ADBE Geometry2"],
+ "logic":"Two-sine position shake (11/23 Hz x, 13/27 Hz y, amp 13px); velocity drives directional blur (len<=20px) along motion; edges tiled.",
+ "code":"engine/fxlib.py: shake_dirblur(arr, t)"}

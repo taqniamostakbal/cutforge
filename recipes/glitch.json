@@ -1,0 +1,5 @@
+{"name":"glitch","source":"glitch.ffx","status":"rebuilt",
+ "stack":["S_ScanLines x86","ADBE Channel Combiner x19","ADBE Ripple x17"],
+ "controls":["Position Wiggle","Scale Wiggle","Crop Wiggle","Wiggle Quantization Steps"],
+ "logic":"Quantized wiggle (3-frame steps), 3-6 random slice offsets/frame, R/B channel swaps in bands, global RGB split, scanline multiply.",
+ "code":"engine/fxlib.py: glitch(arr, t)"}
