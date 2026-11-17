@@ -15,6 +15,11 @@ Rule: take the method, never install blind. Licenses verified per item.
 |---|---|---|---|
 | EL4CTEO/blender-skills | 28 professional Blender workflow skills (animation, rigging, rendering, QA, export) | MIT | Cloned to ~/workspace/tools/blender-skills and READ before use. Verified against Blender 5.3, the exact version installed here. Written for Claude Code skill folders; here the workflows are read and applied directly in our own bpy scripts. |
 
+## On the shelf (real, vetted, activates later)
+| Item | What it is | License | Activates when |
+|---|---|---|---|
+| sybil-solutions/inference-optimisation-skill | Hill-climbing playbook for local LLM serving speed (ceilings first, one change at a time, interleaved controls, medians, failure ledger) | MIT | A local model actually serves the forge (Level 3 / provider local mode). Cloned to ~/workspace/tools/inference-optimisation-skill. NOT part of the editing pipeline; repo is 1 day old, 1 commit, but its numbers trace to linked measured hill-climb logs. |
+
 ## Adopted as doctrine / reference
 | Item | What we take | License | Note |
 |---|---|---|---|
