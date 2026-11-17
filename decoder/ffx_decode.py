@@ -110,10 +110,26 @@ def main():
             print("    names:", ", ".join(named[:12]))
         for j, pd in enumerate(pards[:dump_n]):
             d = pd.data
-            be32 = struct.unpack(">%df" % (len(d) // 4), d[:len(d) // 4 * 4])
-            ints = struct.unpack(">%di" % (len(d) // 4), d[:len(d) // 4 * 4])
-            print(f"    pard[{j}] ({len(d)}B) int32: {list(ints[:10])}")
-            print(f"             float32: {[round(v, 4) for v in be32[:10]]}")
+            print(f"    pard[{j}] {describe_pard(d)}")
+
+
+def describe_pard(d):
+    """pard layout (148B), decoded 2026-11-17:
+    [12:16] name length N, [16:16+N] property name (ASCII).
+    Tail values are big-endian 16.16 fixed point (int32 / 65536):
+    e.g. Opacity default 100, Skew range -70..70, Shutter Angle 360."""
+    if len(d) < 148:
+        return f"({len(d)}B, short)"
+    n = struct.unpack(">i", d[12:16])[0]
+    nm = ""
+    if 0 < n < 60:
+        nm = d[16:16 + n].decode("ascii", "replace")
+    tail = []
+    for off in range(124, 148, 4):
+        v = struct.unpack(">i", d[off:off + 4])[0] / 65536.0
+        if v != 0:
+            tail.append(v)
+    return f"name={nm!r} tail16.16={tail}"
 
 
 if __name__ == "__main__":
