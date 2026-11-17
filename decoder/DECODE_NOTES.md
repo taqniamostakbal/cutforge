@@ -79,13 +79,21 @@ keyframe data lives in **`ldat`** chunks, each preceded by an
   dimension — but with only 7 such records on disk the exact field
   map stays a labelled hypothesis, not a claim.
 
-## Motion Bank v1 (2026-11-17)
+## Motion Bank (2026-11-17)
 
-`decoder/motion_bank.py` exports every decoded stream to
-`motion_bank/streams_v1.json`: **33 streams, 131 keyframes** from the
-7 presets on disk (27 × 1-D fully parsed; 3 × 104B, 2 × 128B, 1 × 64B
-raw). This is the seed of the Motion Bank — the dataset level of the
-destination.
+`decoder/motion_bank.py` exports every decoded stream to JSON.
+
+- v1: 33 streams, 131 keyframes from the 7 loose presets.
+- **v2: 62 streams, 213 keyframes from 48 presets** — the WaveTools
+  1.6 archive on disk contained a full preset library of 41 more
+  `.ffx`, including five of the eight presets believed stuck in
+  Telegram Web's cache: **glass, toxic, bubble, cartoonish, reels**.
+  Only `effect.2`, `Puddle Impact` and `test` remain unharvested.
+- 104B records (21): idx0/idx1 are always 0.0; idx7/idx8 hover in
+  0.47–0.72 (anchor-like, ≈ centre). 128B still has only 7 records —
+  the field map needs the bigger libraries in the parked archives.
+- 64B records (7): the tail double is garbage in some records — that
+  stream type is not uniformly float64; flagged, not guessed.
 
 ## Still open
 - Per-dimension interleave inside 104B/128B records.
