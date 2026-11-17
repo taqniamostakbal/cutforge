@@ -54,6 +54,28 @@ single-color chapters ≈2.5 s each; everything lives in 3D space; RGB split
 on fast elements; overshoot (back-eased) flying banners; particle streaks;
 music-driven cutting at 60 fps; checkerboard outro.
 
+### 2.1 Frame atlas — every one of the 970 frames measured
+
+Full-rate pass (`analyzer/frame_atlas.py`, data in
+`examples/analysis/atlas_reference.json`). Motion-spike frames
+independently confirm the chapter map and add its sub-beats:
+
+| Frame | Time | Event |
+|---|---|---|
+| 97–98 | 1.63 s | goo transition ignites |
+| 158 | 2.63 s | hard cut (icon → pony) |
+| 269–274 | 4.48–4.57 s | hard cut (pony → 8-BIT), peak motion 63.2 |
+| 420–421 | 7.0 s | hard cut (8-BIT → fly-through), peak 63.8 |
+| 510–512 | 8.5 s | fly-through assembly beat, peak 75.9 (the promo's motion maximum) |
+| 750 | 12.5 s | last fly-through beat, 46.6 |
+| 804–824 | 13.4–13.7 s | goo into the outro |
+
+RGB-split signature: non-zero in **152/970 frames (16%)**, saturating the
+±6 px search cap (at 160-px analysis width) in frames 145–151 and 807 —
+i.e. chroma distortion is a *transition/fast-element* weapon, not a
+constant grade. Rebuilds must pulse it the same way: on at cuts and
+impacts, off at rest.
+
 ## 3. Extracted recipes (from the endlesswave pack, `.ffx` internals)
 
 Effect stacks read from the RIFX binaries with `strings`; counts are chunk
