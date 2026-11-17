@@ -34,8 +34,28 @@ Curves, Transform ×2, S_BlurMotion):
   shows 0.5, 0.5 and 50, 50). Exact slot semantics per property type
   are the next step.
 
+## Keyframe streams — container + encoding cracked 2026-11-17
+
+Each animated property is a `LIST` block (form `tdbs`, ~212–276B)
+inside the effect's stream section, containing:
+
+- `tdsb` (4B) — stream marker
+- `tdsn` → `Utf8` — the property's display name (e.g. `Compare Mode`)
+- **`tdb4` (~124B) — the keyframe data.** Values are **big-endian
+  float64**: a static property shows its value as repeated `1.0`
+  doubles (`3f f0 00 00 00 00 00 00`). A short header precedes the
+  doubles; a flags word (`00 00 00 04 04 …`) follows them.
+- `cdat` (40B) — companion data, also led by a float64.
+
+Note: shake presets carry much of their motion in **expressions**
+(plain text inside the file — the inertial-bounce expression was
+extracted verbatim earlier) plus wiggle controls, not in keyframes.
+The decoder must harvest all three sources: static pard values,
+tdb4 keyframes, expression text.
+
 ## Still open
-- `tdsb` keyframe streams: times, values, bezier tangents.
+- Exact per-keyframe field layout inside `tdb4` (time slot, tangent
+  slots, flags) — next: diff blocks whose values are known to differ.
 - Slot semantics at [48] and [56:76] per property type.
 - The 8 presets still in Telegram Web cache (glass, toxic, bubble,
   cartoonish, reels, effect.2, Puddle Impact, test) — parked by the
