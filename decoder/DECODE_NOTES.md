@@ -74,7 +74,18 @@ keyframe data lives in **`ldat`** chunks, each preceded by an
   - `[3]` tangent time-offset (0.1667 / 0.3333 / 0.5 / 1.0)
 - Multi-dim records: 104B (13 doubles, kind 3), 128B (16 doubles,
   kind 2 in shake 25 — carries 960/961 position constants), 64B
-  (8 doubles). Their per-dimension interleave is the next micro-step.
+  (8 doubles). Within one 128B stream the values move in equal pairs
+  (2.1/2.1, 0.1667/0.1667, −56.44/−56.44) — storage is grouped per
+  dimension — but with only 7 such records on disk the exact field
+  map stays a labelled hypothesis, not a claim.
+
+## Motion Bank v1 (2026-11-17)
+
+`decoder/motion_bank.py` exports every decoded stream to
+`motion_bank/streams_v1.json`: **33 streams, 131 keyframes** from the
+7 presets on disk (27 × 1-D fully parsed; 3 × 104B, 2 × 128B, 1 × 64B
+raw). This is the seed of the Motion Bank — the dataset level of the
+destination.
 
 ## Still open
 - Per-dimension interleave inside 104B/128B records.
