@@ -1,5 +1,26 @@
 # CutForge — The Master Instruction
 
+## 0. The destination (owner's order, 2026-11-17, no limits)
+
+Any model plugs in and drives EVERYTHING: analysis, decoded recipes,
+Blender, rendering, comparison, correction — and produces the edit the
+owner dreams of, from all the absorbed material. The output bar is the
+professionals' own edits, measured against the reference itself, never
+judged by claims. The road climbs, in order:
+
+1. Rebuild After Effects' semantics from observed behavior.
+2. One universal motion representation, lossless across tools.
+3. A foundation model trained on real decoded pro motion (the Motion
+   Bank — data nobody else has, because nobody decoded the binaries).
+4. Mathematical proof of equivalence to the reference, per frame.
+5. The holy grail: finished video in → full editable project out.
+6. Above all: a forge that learns by itself — every decoded preset
+   enters the bank, the rules re-train nightly, improvements publish
+   themselves.
+
+Every level is reached through the same door: **decode the numbers.**
+Complexity lives in the destination; the steps do not change.
+
 *The permanent brain of the editing agent. Every rule, recipe and number in
 this file was extracted from real professional material and verified by
 rendering. Nothing here is decoration: if it is written, it was measured.*
