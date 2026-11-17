@@ -53,9 +53,31 @@ extracted verbatim earlier) plus wiggle controls, not in keyframes.
 The decoder must harvest all three sources: static pard values,
 tdb4 keyframes, expression text.
 
+## Keyframes — FOUND in `ldat` (2026-11-17)
+
+`tdb4` turned out to be a fixed 124B stream-defaults record (sequence
+`[0.0001, 1, 1, 1, 1, 0…]` everywhere), not keyframes. The real
+keyframe data lives in **`ldat`** chunks, each preceded by an
+**`lhd3`** header (52B):
+
+- `lhd3` int32 fields: `[2]` = keyframe count, `[3]` = stream kind,
+  `[4]` = record size in bytes, `[7]` = 4 × `[3]`.
+  Verified: count × record size == `ldat` size, every time.
+- `ldat` = count records of float64 (big-endian).
+- 1-D record = 48B = 6 doubles. Working layout, cross-checked on
+  dozens of streams in all 7 presets on disk:
+  - `[0]` always 0.0 (reserved)
+  - `[1]` **the value** (120→100 blur decay; 41→33; 104→381.6;
+    Position X 961→429 — 961 ≈ centre of a 1920 frame)
+  - `[5]` **the keyframe time in seconds** (0.0 → 0.1667 progressions)
+  - `[2]`, `[4]` tangent value-offsets (can be huge: ±1207, −2848)
+  - `[3]` tangent time-offset (0.1667 / 0.3333 / 0.5 / 1.0)
+- Multi-dim records: 104B (13 doubles, kind 3), 128B (16 doubles,
+  kind 2 in shake 25 — carries 960/961 position constants), 64B
+  (8 doubles). Their per-dimension interleave is the next micro-step.
+
 ## Still open
-- Exact per-keyframe field layout inside `tdb4` (time slot, tangent
-  slots, flags) — next: diff blocks whose values are known to differ.
+- Per-dimension interleave inside 104B/128B records.
 - Slot semantics at [48] and [56:76] per property type.
 - The 8 presets still in Telegram Web cache (glass, toxic, bubble,
   cartoonish, reels, effect.2, Puddle Impact, test) — parked by the
